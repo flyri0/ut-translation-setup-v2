@@ -1,11 +1,15 @@
+import { Route, Router, Switch } from "wouter"
 import { ThemeProvider } from "./components/theme-provider"
+import WelcomePage from "./pages/welcome"
 
-export function App() {
+export default function App() {
   return (
-    <ThemeProvider defaultTheme="dark">
-      <h1>Hello, Wails!</h1>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider defaultTheme="dark">
+        <Switch>
+          <Route path="/" component={WelcomePage} />
+        </Switch>
+      </ThemeProvider>
+    </Router>
   )
 }
-
-export default App
