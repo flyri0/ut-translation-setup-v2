@@ -22,7 +22,7 @@ import {
 
 export default function PickFilePage() {
   return (
-    <div className="select-no mx-17 flex h-dvh flex-col justify-center select-none">
+    <div className="mx-17 flex h-dvh flex-col justify-center select-none">
       <FieldGroup>
         <Field>
           <FieldLabel>Selecione o local de instalação do jogo</FieldLabel>
@@ -50,7 +50,7 @@ export default function PickFilePage() {
         </Field>
       </FieldGroup>
 
-      <div className="mt-5 flex w-full gap-5">
+      <div className="mt-5 flex w-full gap-2">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button size="lg" className="flex-2 hover:cursor-pointer">
