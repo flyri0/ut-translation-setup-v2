@@ -1,4 +1,4 @@
-import { FaMagnifyingGlass, FaFolderOpen, FaFile } from "react-icons/fa6"
+import { FaFileArrowDown, FaFolderOpen, FaFile } from "react-icons/fa6"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -20,7 +20,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 
-export default function PickFilePage() {
+export default function PickTargetPage() {
   return (
     <div className="mx-17 flex h-dvh flex-col justify-center select-none">
       <FieldGroup>
@@ -51,17 +51,10 @@ export default function PickFilePage() {
       </FieldGroup>
 
       <div className="mt-5 flex w-full gap-2">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button size="lg" className="flex-2 hover:cursor-pointer">
-              <FaMagnifyingGlass />
-              Busca Automática
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">
-            Localiza o jogo automaticamente (suporta apenas versões da Steam)
-          </TooltipContent>
-        </Tooltip>
+        <Button disabled size="lg" className="flex-2 hover:cursor-pointer">
+          <FaFileArrowDown />
+          Instalar Tradução
+        </Button>
 
         <Tooltip>
           <TooltipTrigger asChild>

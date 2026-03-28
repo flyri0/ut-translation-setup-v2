@@ -1,8 +1,8 @@
 import { Route, Router, Switch } from "wouter"
 import { ThemeProvider } from "./components/theme-provider"
-import WelcomePage from "./pages/welcome"
-import PickFilePage from "./pages/pick-file"
 import { TooltipProvider } from "./components/ui/tooltip"
+import WelcomePage from "./pages/welcome"
+import PickTargetPage from "./pages/pick-target"
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
         <TooltipProvider>
           <Switch>
             <Route path="/" component={WelcomePage} />
-            <Route path="/pick-file" component={PickFilePage} />
+            <Route path="/pick-target" component={PickTargetPage} />
           </Switch>
         </TooltipProvider>
       </ThemeProvider>

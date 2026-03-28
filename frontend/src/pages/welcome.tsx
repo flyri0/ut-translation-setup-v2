@@ -59,9 +59,9 @@ export default function WelcomePage() {
         </div>
 
         <div className="mt-10 w-full self-center">
-          <Link to="/pick-file" asChild>
+          <Link to="/pick-target" asChild>
             <Button className="w-full border-2 py-10 text-4xl transition hover:cursor-pointer hover:border-2">
-              Instalar Tradução
+              Vamos lá!
             </Button>
           </Link>
         </div>
