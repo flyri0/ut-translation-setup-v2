@@ -1,17 +1,89 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/andygrunwald/vdf"
+	wails "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
-// Tenta encontrar o local de instalalção do jogo, recebe o local de instalação da steam e um id de jogo da steam como argumento
-// e retorna uma string vazia caso não encontre.
-func findGamePath(steamPath string, gameID int) string {
+type FileValidationResult struct {
+	Valid  bool   `json:"valid"`
+	IsDemo bool   `json:"isDemo"`
+	Path   string `json:"path"`
+	Error  string `json:"error,omitempty"` // "not_found" | "not_selected" | "invalid_file"
+}
+
+type PickTargetService struct {
+	ctx context.Context
+}
+
+func NewPickTargetService() *PickTargetService {
+	return &PickTargetService{}
+}
+
+func (s *PickTargetService) startup(ctx context.Context) {
+	s.ctx = ctx
+}
+
+func (s *PickTargetService) QuickFind() FileValidationResult {
+	steamPath := s.findSteamPath()
+
+	for _, gameID := range []int{1574820, 2296400} {
+		installDir := s.findGamePath(steamPath, gameID)
+		if installDir == "" {
+			continue
+		}
+
+		candidate := filepath.Join(installDir, "UntilThen.pck")
+		if info, err := os.Stat(candidate); err == nil && !info.IsDir() {
+			return s.validateFile(candidate)
+		}
+	}
+
+	return FileValidationResult{Valid: false, Error: "not_found"}
+}
+
+func (s *PickTargetService) OpenFilePicker() FileValidationResult {
+	path, err := wails.OpenFileDialog(s.ctx, wails.OpenDialogOptions{
+		Title: "Selecione UntilThen.pck",
+		Filters: []wails.FileFilter{
+			{DisplayName: "UntilThen.pck (*.pck)", Pattern: "*.pck"},
+		},
+	})
+
+	if err != nil || path == "" {
+		return FileValidationResult{Valid: false, Error: "not_selected"}
+	}
+
+	return s.validateFile(path)
+}
+
+func (s *PickTargetService) validateFile(path string) FileValidationResult {
+	if path == "" {
+		return FileValidationResult{Valid: false, Error: "invalid_file"}
+	}
+
+	info, err := os.Stat(path)
+	if err != nil || info.IsDir() || strings.ToLower(filepath.Ext(path)) != ".pck" {
+		return FileValidationResult{Valid: false, Error: "invalid_file"}
+	}
+
+	isDemo := strings.Contains(filepath.Dir(path), "Until Then Demo")
+
+	return FileValidationResult{
+		Valid:  true,
+		IsDemo: isDemo,
+		Path:   path,
+	}
+}
+
+func (s *PickTargetService) findGamePath(steamPath string, gameID int) string {
 	if steamPath == "" {
 		return ""
 	}
@@ -82,9 +154,7 @@ func findGamePath(steamPath string, gameID int) string {
 	return ""
 }
 
-// Tenta encontrar o local de instalação da steam em diferentes plataformas.
-// Retorna uma string vazia caso não encontre.
-func findSteamPath() string {
+func (s *PickTargetService) findSteamPath() string {
 	var candidates []string
 
 	switch runtime.GOOS {

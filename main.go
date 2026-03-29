@@ -13,6 +13,7 @@ import (
 var assets embed.FS
 
 func main() {
+	pickTargetService := NewPickTargetService()
 
 	err := wails.Run(&options.App{
 		Title:  "ut-translation-setup-v2",
@@ -22,11 +23,16 @@ func main() {
 			Assets: assets,
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        func(ctx context.Context) {},
-		Bind:             []any{},
+		OnStartup: func(ctx context.Context) {
+			pickTargetService.startup(ctx)
+		},
+		Bind: []any{
+			pickTargetService,
+		},
 	})
 
 	if err != nil {
 		println("Error:", err.Error())
 	}
 }
+ 
