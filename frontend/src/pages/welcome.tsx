@@ -5,24 +5,31 @@ import { BrowserOpenURL } from "../../wailsjs/runtime"
 import ThemeToggle from "@/components/theme-toggle"
 
 export default function WelcomePage() {
+  const TEAM_MEMBERS = [
+    { alias: "PitterG4", name: "Bernardo Hoffmann" },
+    { alias: "Percival", name: "Gabriel Araújo" },
+    { alias: "Lucasxt", name: "Lucas Silva" },
+    { alias: "Yubi", name: "Eduarda Albuquerque" },
+    { alias: "Ceci", name: "Cecília" },
+    { alias: "flyri0", name: "Francisco" },
+  ]
+
   return (
     <div className="flex text-foreground select-none">
-      <div>
-        <img className="h-dvh max-w-fit" draggable={false} src="banner.webp" />
-      </div>
+      <img className="h-dvh max-w-fit" draggable={false} src="banner.webp" />
 
       <div className="mx-10 my-10 flex grow flex-col justify-center">
         <ThemeToggle className="mb-5" />
 
         <h1 className="text-3xl font-medium tracking-tight text-balance">
-          Until Them... <span className="italic">em português!</span> ✨
+          Until Then... <span className="italic">em português!</span> ✨
         </h1>
 
         <p className="mt-5 font-serif text-muted-foreground">
-          Essa tradução foi feita com carinho por fãs, para que mais pessoas
+          Esta tradução foi feita com carinho por fãs, para que mais pessoas
           possam desfrutar de <span className="italic">Until Then</span> em
-          nosso belissimo idioma. Esperamos que te emocione tanto quanto nos
-          emocionou.
+          nosso belíssimo idioma. Esperamos que esta jornada emocione você tanto
+          quanto nos emocionou.
         </p>
 
         <div className="mt-10">
@@ -33,38 +40,19 @@ export default function WelcomePage() {
             Equipe do Projeto:
           </p>
           <ul className="list-inside list-disc font-serif">
-            <li>
-              <span className="text-muted-foreground">(PitterG4)</span> Bernardo
-              Hoffmann
-            </li>
-            <li>
-              <span className="text-muted-foreground">(Percival)</span> Gabriel
-              Araújo
-            </li>
-            <li>
-              <span className="text-muted-foreground">(Lucasxt)</span> Lucas
-              Silva
-            </li>
-            <li>
-              <span className="text-muted-foreground">(Yubi)</span> Eduarda
-              Albuquerque
-            </li>
-            <li>
-              <span className="text-muted-foreground">(Ceci)</span> Cecília
-            </li>
-            <li>
-              <span className="text-muted-foreground">(flyri0)</span> Francisco
-            </li>
+            {TEAM_MEMBERS.map(({ alias, name }) => (
+              <li key={alias}>
+                <span className="text-muted-foreground">({alias})</span> {name}
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="mt-10 w-full self-center">
-          <Link to="/pick-target" asChild>
-            <Button className="w-full border-2 py-10 text-4xl transition hover:cursor-pointer hover:border-2">
-              Vamos lá!
-            </Button>
-          </Link>
-        </div>
+        <Link to="/pick-target" asChild>
+          <Button className="mt-10 w-full self-center border-2 py-10 text-4xl transition hover:cursor-pointer hover:border-2">
+            Começar
+          </Button>
+        </Link>
 
         <div className="mt-2 flex w-full justify-center gap-2">
           <Button
@@ -95,7 +83,7 @@ export default function WelcomePage() {
               GitHub
             </div>
             <span className="text-[10px] uppercase opacity-80">
-              Veja o código-fonte
+              Código-fonte
             </span>
           </Button>
         </div>

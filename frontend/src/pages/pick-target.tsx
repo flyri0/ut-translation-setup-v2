@@ -9,69 +9,61 @@ import {
   FieldContent,
   FieldTitle,
 } from "@/components/ui/field"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
+import { ButtonGroup } from "@/components/ui/button-group"
 
 export default function PickTargetPage() {
   return (
     <div className="mx-17 flex h-dvh flex-col justify-center select-none">
       <FieldGroup>
         <Field>
-          <FieldLabel>Selecione o local de instalação do jogo</FieldLabel>
-          <InputGroup className="pointer-events-none cursor-default">
-            <InputGroupInput
-              disabled
-              placeholder="Nenhum diretório selecionado..."
-            />
-            <InputGroupAddon align="inline-start">
-              <FaFile />
-            </InputGroupAddon>
-          </InputGroup>
-          <FieldDescription>Nenhum caminho selecionado</FieldDescription>
+          <FieldLabel>Local de instalação do jogo</FieldLabel>
+          <FieldDescription>
+            Selecione a pasta onde o arquivo executável do jogo está localizado
+          </FieldDescription>
+          <ButtonGroup>
+            <InputGroup>
+              <InputGroupAddon
+                align="inline-start"
+                className="pointer-events-none"
+              >
+                <FaFile />
+              </InputGroupAddon>
+              <InputGroupInput
+                disabled
+                placeholder="Nenhum local selecionado..."
+              />
+            </InputGroup>
+
+            <Button className="hover:cursor-pointer" variant="outline">
+              <FaFolderOpen />
+              Procurar...
+            </Button>
+          </ButtonGroup>
+          <FieldDescription />
         </Field>
 
         <Field orientation="horizontal">
           <Checkbox />
           <FieldContent>
-            <FieldTitle>Fazer backup</FieldTitle>
+            <FieldTitle>Criar backup de segurança</FieldTitle>
             <FieldDescription className="w-3/5">
-              Cria uma cópia dos arquivos originais (requer 4GB livres). Útil
-              para restaurar o idioma padrão posteriormente
+              Recomendado para restaurar os arquivos originais e o idioma padrão
+              caso necessário
             </FieldDescription>
           </FieldContent>
         </Field>
       </FieldGroup>
 
-      <div className="mt-5 flex w-full gap-2">
-        <Button disabled size="lg" className="flex-2 hover:cursor-pointer">
-          <FaFileArrowDown />
-          Instalar Tradução
-        </Button>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="flex-1 hover:cursor-pointer"
-            >
-              <FaFolderOpen />
-              Selecionar Manualmente
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">
-            Selecione a pasta onde o executável do jogo está instalado
-          </TooltipContent>
-        </Tooltip>
-      </div>
+      <Button disabled size="lg" className="mt-5 w-full hover:cursor-pointer">
+        <FaFileArrowDown />
+        Iniciar Instalação
+      </Button>
     </div>
   )
 }
