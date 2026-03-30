@@ -13,7 +13,8 @@ import (
 var assets embed.FS
 
 func main() {
-	pickTargetService := NewPickTargetService()
+	sharedState := NewInstallerState()
+	pickTargetService := NewPickTargetService(sharedState)
 
 	err := wails.Run(&options.App{
 		Title:  "ut-translation-setup-v2",
@@ -35,4 +36,3 @@ func main() {
 		println("Error:", err.Error())
 	}
 }
- 

@@ -22,11 +22,14 @@ type FileValidationResult struct {
 }
 
 type PickTargetService struct {
-	ctx context.Context
+	ctx   context.Context
+	state *InstallerState
 }
 
-func NewPickTargetService() *PickTargetService {
-	return &PickTargetService{}
+func NewPickTargetService(state *InstallerState) *PickTargetService {
+	return &PickTargetService{
+		state: state,
+	}
 }
 
 func (s *PickTargetService) startup(ctx context.Context) {
@@ -81,6 +84,10 @@ func (s *PickTargetService) CheckFreeSpace(path string) bool {
 	const requiredBytes uint64 = 5368709120
 
 	return usage.Free >= requiredBytes
+}
+
+func (s *PickTargetService) SaveSettings(path string, isDemo bool, makeBackup bool) {
+	s.state.SetState(path, isDemo, makeBackup)
 }
 
 func (s *PickTargetService) validateFile(path string) FileValidationResult {
