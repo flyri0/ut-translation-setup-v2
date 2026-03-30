@@ -10,35 +10,24 @@ export default function FinishedPage() {
       return Math.random() * (max - min) + min
     }
 
-    const colors = [
-      "#26ccff",
-      "#a25afd",
-      "#ff5e7e",
-      "#88ff5a",
-      "#fcff42",
-      "#ffa62d",
-      "#ff36ff",
-    ]
-
     const interval = setInterval(() => {
       confetti({
-        particleCount: 1,
-        startVelocity: 0,
-        ticks: 1500,
-        gravity: randomInRange(0.3, 0.6),
-        drift: randomInRange(-0.5, 0.5),
-        origin: {
-          x: randomInRange(0, 1),
-          y: -0.1,
-        },
-        colors: [colors[Math.floor(Math.random() * colors.length)]],
-        scalar: randomInRange(0.5, 1.2),
+        angle: randomInRange(80, 100),
+        colors: ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"],
+        disableForReducedMotion: true,
+        drift: randomInRange(-1, 1),
+        gravity: randomInRange(0.4, 0.8),
+        origin: { x: Math.random(), y: 1.05 },
+        particleCount: randomInRange(3, 25),
+        scalar: randomInRange(0.4, 1.2),
+        startVelocity: randomInRange(50, 100),
+        ticks: 3000,
       })
     }, 50)
 
     const timeout = setTimeout(() => {
       clearInterval(interval)
-    }, 15000)
+    }, 3000)
 
     return () => {
       clearTimeout(timeout)
