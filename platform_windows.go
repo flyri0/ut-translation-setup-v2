@@ -2,7 +2,19 @@
 
 package main
 
-import "golang.org/x/sys/windows/registry"
+import (
+	_ "embed"
+
+	"golang.org/x/sys/windows/registry"
+)
+
+//go:embed assets/GodotPCKExplorer_1.5.3_native-console-win-64.zip
+var pckExplorerBinZip []byte
+
+const (
+	pckExplorerZipName = "GodotPCKExplorer_1.5.3_native-console-win-64.zip"
+	pckBinName         = "GodotPCKExplorer.Console.exe"
+)
 
 func steamPathFromRegistry() string {
 	key, err := registry.OpenKey(

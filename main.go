@@ -21,6 +21,7 @@ func main() {
 
 	sharedState := NewInstallerState()
 	pickTargetService := NewPickTargetService(sharedState)
+	pckExplorerService := NewPckExplorerService(sharedState)
 
 	err = wails.Run(&options.App{
 		Title:  "ut-translation-setup-v2",
@@ -33,9 +34,11 @@ func main() {
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup: func(ctx context.Context) {
 			pickTargetService.startup(ctx)
+			pckExplorerService.startup(ctx)
 		},
 		Bind: []any{
 			pickTargetService,
+			pckExplorerService,
 		},
 	})
 
