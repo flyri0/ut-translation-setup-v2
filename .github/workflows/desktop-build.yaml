@@ -76,7 +76,7 @@ jobs:
         with:
           version: latest
           files: build/bin/${{ env.FINAL_BINARY_NAME }}
-          args: -9 
+          args: -9
 
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
@@ -86,8 +86,5 @@ jobs:
           tag_name: ${{ env.TAG_NAME }}
           name: ${{ env.TAG_NAME }}
           files: build/bin/${{ env.FINAL_BINARY_NAME }}
-          draft: false
-          prerelease: false
-          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
