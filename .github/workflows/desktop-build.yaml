@@ -71,13 +71,6 @@ jobs:
           go-version: "1.23"
           node-version: "22.x"
 
-      - name: Compress binary with UPX
-        uses: crazy-max/ghaction-upx@v3
-        with:
-          version: latest
-          files: build/bin/${{ env.FINAL_BINARY_NAME }}
-          args: -9
-
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         # Run if it's a tag push OR a manual dispatch
