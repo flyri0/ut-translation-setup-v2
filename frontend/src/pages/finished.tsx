@@ -37,19 +37,13 @@ export default function FinishedPage() {
 
   return (
     <div className="mx-15 flex h-dvh flex-col items-center justify-center select-none">
-      <video
-        className="pointer-events-none h-35 rounded"
-        draggable={false}
-        autoPlay
-        loop
-        src="cathy.webm"
-      />
+      <img draggable={false} className="w-1/5 rounded" src="cathy.gif" />
 
-      <h1 className="mt-2 text-center text-2xl font-bold md:text-3xl">
+      <h1 className="mt-5 text-center text-2xl font-bold md:text-3xl">
         Instalação Completa! 🎉
       </h1>
 
-      <p className="max-w-9/12 text-sm text-muted-foreground sm:mt-5 sm:text-lg">
+      <p className="max-w-9/12 text-center font-serif text-sm text-muted-foreground sm:mt-5 sm:text-lg">
         De coração, muito obrigado pela confiança! Foi um esforço de paixão de
         toda a equipe. Caso encontre algum erro ou tenha alguma sugestão, por
         favor, não hesite em nos contar!
@@ -58,7 +52,7 @@ export default function FinishedPage() {
       </p>
 
       <Button
-        className="mt-2 w-full hover:cursor-pointer sm:mt-5"
+        className="mt-5 h-14 w-full hover:cursor-pointer sm:mt-5"
         size="lg"
         onClick={Quit}
       >

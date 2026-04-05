@@ -28,7 +28,7 @@ export default function SocialButtons({ className }: SocialButtonsProps) {
       <Tooltip disableHoverableContent>
         <TooltipTrigger asChild>
           <Button
-            className="flex-1"
+            className="flex-1 hover:cursor-pointer"
             variant="outline"
             onClick={() =>
               BrowserOpenURL(

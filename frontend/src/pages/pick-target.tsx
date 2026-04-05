@@ -177,7 +177,7 @@ export default function PickTargetPage() {
               <FieldTitle>Criar backup de segurança</FieldTitle>
               <FieldDescription className="w-3/5">
                 Salva uma cópia do arquivo original para restaurar o idioma
-                padrão quando necessário.
+                padrão quando necessário. (Cerca de 2GB a mais vão ser ocupados)
               </FieldDescription>
             </FieldContent>
           </Field>
