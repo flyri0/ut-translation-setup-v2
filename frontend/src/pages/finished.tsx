@@ -37,10 +37,12 @@ export default function FinishedPage() {
 
   return (
     <div className="mx-28 flex h-dvh flex-col items-center justify-center select-none">
-      <img
+      <video
         draggable={false}
-        className="aspect-square w-2/12 rounded"
-        src="cathy.webp"
+        autoPlay
+        loop
+        className="pointer-events-none aspect-square w-2/12 rounded"
+        src="cathy.webm"
       />
 
       <h1 className="mt-5 text-3xl font-bold">Instalação Completa! 🎉</h1>
