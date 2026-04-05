@@ -51,7 +51,6 @@ export default function InstallPage() {
       setStatus("success")
       setStep(msg)
       appendLog("[SISTEMA] Processo finalizado com sucesso!")
-      navigate("/finished")
     })
 
     return () => {
