@@ -21,8 +21,9 @@ func GetLogFilePath() string {
 }
 
 func main() {
-	logPath := GetLogFilePath()
+	app := NewApp()
 
+	logPath := GetLogFilePath()
 	logger := NewFileLogger(logPath)
 	defer logger.Close()
 
@@ -31,15 +32,17 @@ func main() {
 	pckExplorerService := NewPckExplorerService(sharedState)
 
 	err := wails.Run(&options.App{
-		Title:  "ut-translation-setup-v2",
-		Logger: logger,
-		Width:  1024,
-		Height: 768,
+		Title:       "Until Then - Instalar Tradução",
+		Logger:      logger,
+		Width:       1024,
+		Height:      768,
+		StartHidden: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup: func(ctx context.Context) {
+			app.startup(ctx)
 			pickTargetService.startup(ctx)
 			pckExplorerService.startup(ctx)
 		},
