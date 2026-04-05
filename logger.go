@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 type FileLogger struct {
@@ -10,8 +12,11 @@ type FileLogger struct {
 	logger *log.Logger
 }
 
-func NewFileLogger(filename string) *FileLogger {
-	file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+func NewFileLogger(baseFilename string) *FileLogger {
+	timestamp := time.Now().Format("02-01-2006 15-04-05")
+	filename := fmt.Sprintf("%s_%s.log", baseFilename, timestamp)
+
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("Failed to open log file: %v", err)
 	}
