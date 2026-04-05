@@ -33,10 +33,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          # If triggered manually, checkout the specific ref provided in inputs
+          ref: ${{ github.event.inputs.target_ref || github.ref }}
 
       - name: Get Tag Name
         shell: bash
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Use the input value for manual builds
+            echo "TAG_NAME=${{ github.event.inputs.target_ref }}" >> $GITHUB_ENV
+          else
+            # Extract tag from the git ref for tag pushes
+            echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          fi
 
       - name: Set Binary Name
         shell: bash
@@ -67,13 +76,18 @@ jobs:
         with:
           version: latest
           files: build/bin/${{ env.FINAL_BINARY_NAME }}
-          args: -9 # Uses maximum compression. Change to -7 or -8 if it takes too long.
+          args: -9 
 
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        # Run if it's a tag push OR a manual dispatch
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
-          # The wails action outputs the built binary to build/bin/
+          tag_name: ${{ env.TAG_NAME }}
+          name: ${{ env.TAG_NAME }}
           files: build/bin/${{ env.FINAL_BINARY_NAME }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
