@@ -1,19 +1,48 @@
-# README
+# 🇧🇷 Tradução PT-BR: Until Then
 
-## About
+Esta tradução foi feita com carinho por fãs, para que mais pessoas possam desfrutar de Until Then em nosso belíssimo idioma.
 
-This is the official Wails Vanilla template.
+Esperamos que esta jornada emocione você tanto quanto nos emocionou.
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+---
 
-## Live Development
+## 🐧 Suporte para Linux (Dependências)
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+O instalador utiliza uma interface baseada em **WebView**. Embora a maioria das distribuições modernas já possua as bibliotecas necessárias, caso o instalador não abra ou apresente erros de "shared libraries" (como o `libwebkit2gtk-4.1.so.0`), instale a dependência correspondente à sua distro:
 
-## Building
+### **Ubuntu / Debian / Linux Mint**
 
-To build a redistributable, production mode package, use `wails build`.
+```bash
+sudo apt update && sudo apt install libwebkit2gtk-4.1-0
+```
+
+### **Fedora**
+
+```bash
+sudo dnf install webkit2gtk4.1
+```
+
+### **Arch Linux / Manjaro**
+
+```bash
+sudo pacman -S webkit2gtk-4.1
+```
+
+### **openSUSE (Tumbleweed / Leap)**
+
+```bash
+sudo zypper install libwebkit2gtk-4_1-0
+```
+
+## 👥 Créditos
+
+- Bernardo Hoffmann (PitterG4) - Tradução e Instalador
+- Gabriel Araújo (Percival) - Tradução
+- Lucas Silva (Lucasxt) - Tradução
+- Eduarda Albuquerque (Yubi) - Tradução
+- Cecília (Ceci) - Tradução
+- Francisco Lyrio (flyri0) - Instalador
+
+## ⚖️ Aviso Legal
+
+Este é um projeto **não oficial** feito por fãs e não possui fins lucrativos. Todos os direitos sobre o jogo _Until Then_ pertencem aos seus respectivos desenvolvedores e editores. Por favor, apoie os criadores originais comprando o jogo oficial em sua plataforma de preferência.

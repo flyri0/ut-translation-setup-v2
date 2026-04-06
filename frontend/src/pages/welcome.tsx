@@ -11,7 +11,7 @@ export default function WelcomePage() {
     { alias: "Lucasxt", name: "Lucas Silva" },
     { alias: "Yubi", name: "Eduarda Albuquerque" },
     { alias: "Ceci", name: "Cecília" },
-    { alias: "flyri0", name: "Francisco" },
+    { alias: "flyri0", name: "Francisco Lyrio" },
   ]
 
   return (

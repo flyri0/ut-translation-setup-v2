@@ -8,7 +8,7 @@ import InstallPage from "./pages/install"
 import { memoryLocation } from "wouter/memory-location"
 
 export default function App() {
-  const { hook } = memoryLocation({ path: "/pick-target" })
+  const { hook } = memoryLocation({ path: "/" })
 
   return (
     <ThemeProvider defaultTheme="dark">
