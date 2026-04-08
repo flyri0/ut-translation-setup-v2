@@ -30,7 +30,7 @@ func (a *App) startup(ctx context.Context) {
 		}
 
 		// Calculate optimal dimensions (Fraction: 0.5, Aspect Ratio: 4:3)
-		width, height := a.resizeWithRatio(activeScreen.Size.Width, activeScreen.Size.Height, 4.0, 3.0, 0.6)
+		width, height := a.resizeWithRatio(activeScreen.Size.Width, activeScreen.Size.Height, 3.8, 3.0, 0.65)
 
 		wails.WindowSetSize(ctx, width, height)
 		wails.WindowCenter(ctx)

@@ -174,10 +174,10 @@ export default function PickTargetPage() {
               onCheckedChange={(value: boolean) => setIsBackupChecked(value)}
             />
             <FieldContent>
-              <FieldTitle>Criar backup de segurança</FieldTitle>
+              <FieldTitle>Criar cópia de segurança</FieldTitle>
               <FieldDescription className="w-3/5">
-                Salva uma cópia do arquivo original para restaurar o idioma
-                padrão quando necessário. (Cerca de 2GB a mais vão ser ocupados)
+                Salva uma cópia do arquivo original para restaurar
+				o idioma padrão (ocupa 2 GB adicionais).
               </FieldDescription>
             </FieldContent>
           </Field>

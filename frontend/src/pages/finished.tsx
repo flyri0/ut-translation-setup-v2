@@ -47,12 +47,12 @@ export default function FinishedPage() {
         De coração, muito obrigado pela confiança! Foi um esforço de paixão de
         toda a equipe. Caso encontre algum erro ou tenha alguma sugestão, por
         favor, não hesite em nos contar!
-        <br />
-        No mais, aproveite a viagem. Bom jogo!
+        <br /> <br />
+        No mais, aproveite a viagem. Bom jogo! 🫡
       </p>
 
       <Button
-        className="mt-5 h-14 w-full hover:cursor-pointer sm:mt-5"
+        className="mt-5 md:h-16 md:text-2xl w-full hover:cursor-pointer sm:mt-5"
         size="lg"
         onClick={Quit}
       >

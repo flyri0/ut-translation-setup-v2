@@ -8,9 +8,9 @@ export default function WelcomePage() {
   const TEAM_MEMBERS = [
     { alias: "PitterG4", name: "Bernardo Hoffmann" },
     { alias: "Percival", name: "Gabriel Araújo" },
+	{ alias: "Ceci", name: "Cecília Dourado" },
     { alias: "Lucasxt", name: "Lucas Silva" },
     { alias: "Yubi", name: "Eduarda Albuquerque" },
-    { alias: "Ceci", name: "Cecília" },
     { alias: "flyri0", name: "Francisco Lyrio" },
   ]
 
@@ -19,20 +19,20 @@ export default function WelcomePage() {
       <img className="h-dvh" draggable={false} src="banner.webp" />
 
       <div className="mx-5 my-2 self-center">
-        <ThemeToggle className="mb-1" />
+        <ThemeToggle className="mb-5" />
 
-        <h1 className="text-base font-medium tracking-tight text-balance md:text-2xl">
+        <h1 className="mb-1 text-base font-medium tracking-tight text-balance md:text-2xl">
           Until Then... <span className="italic">em português!</span> ✨
         </h1>
 
         <p className="font-serif text-xs text-muted-foreground md:text-base">
           Esta tradução foi feita com carinho por fãs, para que mais pessoas
           possam desfrutar de <span className="italic">Until Then</span> em
-          nosso belíssimo idioma. Esperamos que esta jornada emocione você tanto
+          nosso belíssimo português.<br />Esperamos que te emocione tanto
           quanto nos emocionou.
         </p>
 
-        <p className="mt-2 flex items-center gap-1 text-sm text-muted-foreground md:text-base">
+        <p className="mt-5 flex items-center gap-1 text-sm text-muted-foreground md:text-base">
           <span>
             <FaUsers />
           </span>
@@ -47,8 +47,8 @@ export default function WelcomePage() {
         </ul>
 
         <Link to="/pick-target" asChild>
-          <Button className="mt-2 w-full hover:cursor-pointer md:h-16 md:text-2xl">
-            Começar
+          <Button className="mt-5 w-full hover:cursor-pointer md:h-16 md:text-2xl">
+            Vamos lá!
           </Button>
         </Link>
 
