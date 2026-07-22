@@ -230,7 +230,9 @@ func (s *PckExplorerService) streamLogs(pipe io.ReadCloser, eventName string) {
 
 	go func() {
 		for scanner.Scan() {
-			lastLine = scanner.Text()
+			rawLine := scanner.Text()
+			lastLine = strings.ReplaceAll(rawLine, "\x00", "")
+			
 			hasNewContent = true
 		}
 	}()
