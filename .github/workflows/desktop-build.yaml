@@ -62,7 +62,7 @@ jobs:
           fi
 
       - name: Build wails
-        uses: dAppCore/build/actions/build/wails2@v4.0.0
+        uses: dAppCore/build/actions/build/wails2@v4
         id: build
         with:
           build-name: ${{ env.FINAL_BINARY_NAME }}
